@@ -134,8 +134,10 @@
             <h2>Bli först att prova SwishSplit</h2>
             <p>Registrera din e-post så får du veta direkt när appen lanseras</p>
             
-            <form class="email-form" onsubmit="handleEmailSignup(event)">
-                <input type="email" class="email-input" placeholder="Din e-postadress" required>
+            <form class="email-form" action="https://formspree.io/f/xvgrkgew" method="POST">
+                <input type="email" name="email" class="email-input" placeholder="Din e-postadress" required>
+                <input type="hidden" name="_subject" value="Ny registrering för SwishSplit!">
+                <input type="hidden" name="_next" value="https://swishsplit.se?thanks=1">
                 <button type="submit" class="email-submit">Meddela mig</button>
             </form>
             
@@ -148,10 +150,10 @@
         <div class="container">
             <div class="footer-links">
                 <a href="mailto:hej@swishsplit.se">Kontakt</a>
-                <a href="integritetspolicy.html">Integritetspolicy</a>
-                <a href="anvandarvillkor.html">Användarvillkor</a>
+                <a href="#privacy">Integritetspolicy</a>
+                <a href="#terms">Användarvillkor</a>
             </div>
-            <p>&copy; 2025 G & I Techlabs. Alla rättigheter förbehållna.</p>
+            <p>&copy; 2025 SwishSplit. Alla rättigheter förbehållna.</p>
             <p style="opacity: 0.7; margin-top: 1rem;">Gjort med ❤️ i Sverige</p>
         </div>
     </footer>
@@ -194,6 +196,13 @@
             console.log('SwishSplit landing page loaded');
             // Add your analytics code here when ready
         });
+
+        // Add this script to show thank you message
+        if (window.location.search.includes('thanks=1')) {
+            document.getElementById('signup-message').style.display = 'block';
+            document.getElementById('signup-message').innerHTML = 
+                '<p style="color: white; background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">Tack! Vi hör av oss när SwishSplit lanseras 🚀</p>';
+        }
     </script>
 </body>
 </html>
